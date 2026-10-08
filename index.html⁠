@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KoTarZan Game Shop - MLBB Calculator</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 15px; background-color: #f5f5f5; }
+        .header { background: #1b5e20; color: white; padding: 12px; text-align: center; border-radius: 6px; font-weight: bold; margin-bottom: 15px; }
+        .input-box { background: white; padding: 15px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        th, td { border: 1px solid #ddd; padding: 8px 5px; text-align: center; font-size: 14px; }
+        th { background-color: #1976d2; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .result { font-weight: bold; color: #d32f2f; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    KoTarZan - Digital Store မှဝန်ဆောင်မှုပေးသည်
+</div>
+
+<div class="input-box">
+    <label for="rate">ကိုယ်ဝယ်ခဲ့တဲ့ Smile code ဈေး ထည့်ပါ:</label>
+    <input type="number" id="rate" placeholder="ဥပမာ - 70" oninput="calculate()">
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Dia Plan</th>
+            <th>Coin Price</th>
+            <th>Total MMK</th>
+        </tr>
+    </thead>
+    <tbody id="table-body">
+        <tr><td>1</td><td>Weekly Pass</td><td>76</td><td class="result">-</td></tr>
+        <tr><td>2</td><td>Twilight Pass</td><td>402.5</td><td class="result">-</td></tr>
+        <tr><td>3</td><td>86 Dia</td><td>61.5</td><td class="result">-</td></tr>
+        <tr><td>4</td><td>172 Dia</td><td>122</td><td class="result">-</td></tr>
+        <tr><td>5</td><td>257 Dia</td><td>177.5</td><td class="result">-</td></tr>
+        <tr><td>6</td><td>343 Dia</td><td>239</td><td class="result">-</td></tr>
+        <tr><td>7</td><td>429 Dia</td><td>299.5</td><td class="result">-</td></tr>
+        <tr><td>8</td><td>514 Dia</td><td>355</td><td class="result">-</td></tr>
+        <tr><td>9</td><td>600 Dia</td><td>416.5</td><td class="result">-</td></tr>
+        <tr><td>10</td><td>706 Dia</td><td>480</td><td class="result">-</td></tr>
+        <tr><td>11</td><td>878 Dia</td><td>602</td><td class="result">-</td></tr>
+        <tr><td>12</td><td>963 Dia</td><td>657.5</td><td class="result">-</td></tr>
+        <tr><td>13</td><td>1049 Dia</td><td>719</td><td class="result">-</td></tr>
+        <tr><td>14</td><td>1135 Dia</td><td>779.5</td><td class="result">-</td></tr>
+        <tr><td>15</td><td>1412 Dia</td><td>960</td><td class="result">-</td></tr>
+        <tr><td>16</td><td>2195 Dia</td><td>1453</td><td class="result">-</td></tr>
+        <tr><td>17</td><td>2901 Dia</td><td>1933</td><td class="result">-</td></tr>
+    </tbody>
+</table>
+
+<script>
+    function calculate() {
+        let rate = parseFloat(document.getElementById('rate').value) || 0;
+        let rows = document.querySelectorAll('#table-body tr');
+        rows.forEach(row => {
+            let coin = parseFloat(row.cells[2].innerText);
+            let total = coin * rate;
+            row.cells[3].innerText = total ? Math.round(total).toLocaleString() + ' MMK' : '-';
+        });
+    }
+</script>
+
+</body>
+</html>
